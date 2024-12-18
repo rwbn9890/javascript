@@ -21,42 +21,66 @@ let data = [
 
 
 
+
+
+function del(id){
+
+    let delData = data.filter((ele)=> ele.id != id)
+ 
+ //    console.log(delData);
+        data = delData;
+    showData(delData)
+ }
+
+ console.log(data)
+
+
+
+
+
 document.querySelector("#form").addEventListener("submit", function(e){
+
      e.preventDefault(); 
+
+     let id = document.querySelector("#id").value;
+
+     if(id){
+       let updatedData =  data.map((ele) => {
+            if(ele.id == id){
+                ele.pic =document.querySelector("#img").value ,
+                ele.name =document.querySelector("#name").value ,
+                ele.email =document.querySelector("#email").value ,
+                ele.age =document.querySelector("#age").value 
+            }
+
+            return ele;
+         })
+         showData(updatedData)
+
+     }
+     else {
+
+            let num = Math.random();
+            let obj = {
+                id : Math.round(num*1000),
+                pic :document.querySelector("#img").value ,
+                name :document.querySelector("#name").value ,
+                email :document.querySelector("#email").value ,
+                age :document.querySelector("#age").value 
+        
+                }
+                data.push(obj);
+                showData(data)
   
-let pic1 = document.querySelector("#img").value
-let name1 = document.querySelector("#name").value
-let email1 = document.querySelector("#email").value
-let age1 = document.querySelector("#age").value
-     let num = Math.random();
-     let obj = {
-        id : Math.round(num*1000),
-        pic :pic1 ,
-        name :name1 ,
-        email :email1 ,
-        age :age1 ,
-   }
-
- data.push(obj);
-
-   showData(data)
+     }
 
    document.querySelector("#img").value = ""
    document.querySelector("#name").value = ""
    document.querySelector("#email").value = ""
    document.querySelector("#age").value = ""
-  
-   console.log(Math.round(num*1000))
 })
 
 
-function del(id){
-
-   let delData = data.filter((ele)=> ele.id != id)
-
-//    console.log(delData);
-   showData(delData)
-}
 
 function edit(id){
 
@@ -64,14 +88,14 @@ function edit(id){
 
   data.map((ele) => {
 
-   
         if(ele.id == id){
             document.querySelector("#img").value = ele.pic
             document.querySelector("#name").value = ele.name
             document.querySelector("#email").value = ele.email
             document.querySelector("#age").value = ele.age
-            document.querySelector("#submain").style.display = "none";
-            document.querySelector("#update").style.display = "block";
+            document.querySelector("#id").value = ele.id
+            
+            
         }
     })
   
@@ -90,7 +114,7 @@ function showData(delData){
             <td>${ele.name}</td>
             <td>${ele.email}</td>
             <td>${ele.age}</td>
-             <td><button class="btn btn-waring" onclick="edit(${ele.id})">Edit</button></td>
+             <td><button class="btn btn-warning" onclick="edit(${ele.id})">Edit</button></td>
              <td><button class="btn btn-danger" onclick="del(${ele.id})">Delete</button></td>
         </tr>
     `
@@ -113,7 +137,7 @@ data.map((ele) => {
     
     tbody.innerHTML += `
         <tr >
-            <td><img src="${ele.pic}" /></td>
+            <td><img width="50px" class="img-fluid rounded-circle" src="${ele.pic}" /></td>
             <td>${ele.name}</td>
             <td>${ele.email}</td>
             <td>${ele.age}</td>
