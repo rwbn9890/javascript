@@ -6,9 +6,19 @@
     <title>Form input</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
+
+<style>
+    #form label{
+        border: 1px solid red;
+        background-color: brown;
+        color: white;
+    }
+</style>
 <body>
     
-
+<div class="not">
+    
+</div>
 
 <div class="container my-5">
     
@@ -17,21 +27,26 @@
          <div class="row g-2">
             <div class="col-3">
                 <input type="text" id="id" disabled >
-                  <input class="form-control" id="img" placeholder="Enter img" type="text">
+                  <input class="form-control invalid" id="img" name="pic" placeholder="Enter img" type="text" >
             </div>
             <div class="col-3">
-                  <input class="form-control" id="name" placeholder="Enter name" type="text">
+                  <input class="form-control" id="name" name="name" placeholder="Enter name" type="text" >
             </div>
             <div class="col-3">
-                  <input class="form-control" id="email" placeholder="Enter email" type="email">
+                  <input class="form-control" id="email" name="email" placeholder="Enter email" type="email" >
             </div>
             <div class="col-3">
-                  <input class="form-control" id="age" placeholder="Enter age" type="number">
+                  <input class="form-control" id="age" name="age" placeholder="Enter age" type="number" >
+            </div>
+            <div class="col-3">
+                  <input class="form-check status" name="status" value="Marid1" placeholder="Enter age" type="checkbox" >
+                  <input class="form-check status" name="status" value="Marid2" placeholder="Enter age" type="checkbox" >
+                  <input class="form-check status" name="status" value="Marid3" placeholder="Enter age" type="checkbox" >
             </div>
             <div class="col-12 text-center">
                   <button  class="btn btn-success" id="submain">submit</button>
                   
-                  
+
             </div>
          </div>
       
@@ -61,8 +76,53 @@
     </table>
 </div>
 
+
+
+
+
+
+
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    
+  </div>
+</div>
+
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="index.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js" integrity="sha512-KFHXdr2oObHKI9w4Hv1XPKc898mE4kgYx58oqsc/JqqdLMDI4YjOLzom+EMlW8HFUd0QfjfAvxSL6sEq/a42fQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    jQuery("#form").validate({
+        focusInvalid: true,
+        errorClass: "invalid",
+        rules:{
+            name:{
+                :true,
+                minlength:5
+            }
+        },
+
+        messages:{
+            pic:"enter users pic",
+            name:{
+               : "Enter users name",
+               minlength: "should have 5 characters"
+            }
+
+        }
+    })
+
+
+</script> -->
+
 </html>
