@@ -15,6 +15,12 @@
     }
 </style>
 <body>
+
+   
+
+<div class="toast-container position-fixed top-0 end-0 p-3">
+  
+</div>
     
 <div class="not">
     
@@ -26,7 +32,7 @@
      
          <div class="row g-2">
             <div class="col-3">
-                <input type="text" id="id" disabled >
+                <input type="text" id="id" hidden >
                   <input class="form-control invalid" id="img" name="pic" placeholder="Enter img" type="text" >
             </div>
             <div class="col-3">
@@ -38,10 +44,15 @@
             <div class="col-3">
                   <input class="form-control" id="age" name="age" placeholder="Enter age" type="number" >
             </div>
-            <div class="col-3">
-                  <input class="form-check status" name="status" value="Marid1" placeholder="Enter age" type="checkbox" >
-                  <input class="form-check status" name="status" value="Marid2" placeholder="Enter age" type="checkbox" >
-                  <input class="form-check status" name="status" value="Marid3" placeholder="Enter age" type="checkbox" >
+            <div class="col-6 d-flex">
+                  <input class="form-check status ms-4"  name="status" value="Cricket" placeholder="Enter age" type="checkbox" > Cricket
+                  <input class="form-check status ms-4" name="status" value="Music" placeholder="Enter age" type="checkbox" > Music
+                  <input class="form-check status ms-4" name="status" value="Dancing" placeholder="Enter age" type="checkbox" > Dancing
+            </div>
+            <div class="col-6 d-flex">
+                  <input class="form-check gen ms-4" name="status" value="male" placeholder="Enter age" type="radio" > male
+                  <input class="form-check gen ms-4" name="status" value="female" placeholder="Enter age" type="radio" > female
+                  <input class="form-check gen ms-4" name="status" value="other" placeholder="Enter age" type="radio" > other
             </div>
             <div class="col-12 text-center">
                   <button  class="btn btn-success" id="submain">submit</button>
@@ -66,8 +77,10 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Age</th>
-                <th>oper</th>
-                <th>oper</th>
+                <th>status</th>
+                <th>✏️</th>
+                <th>🗑️</th>
+                <th>🟰</th>
             </tr>
         </thead>
         <tbody id="tbody">
