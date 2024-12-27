@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form input</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+
+<style>
+    #form label{
+        border: 1px solid red;
+        background-color: brown;
+        color: white;
+    }
+
+    .time{
+        /* border: 1px solid green; */
+        width: fit-content;
+        margin-left: auto;
+        display: flex;
+        gap: 4px;
+        padding: 5px;
+    }
+    .time > div {
+         position: relative;
+        width: 35px;
+        padding: 5px;
+        text-align: center;
+        background-color: aliceblue;
+        border-radius: 4px;
+        z-index: 1;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
+
+
+    .sec2{
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        padding: 5px;
+        text-align: center;
+        background-color: aliceblue;
+        border-radius: 4px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        
+    }
+
+    .sec{
+        animation: flip 1s;
+        transform-origin: top;
+        display: block;
+        position: relative;
+z-index: 2;
+        padding: 5px;
+        text-align: center;
+        background-color: aliceblue;
+        border-radius: 4px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
+
+
+    @keyframes flip {
+        0%{
+            transform: rotateX(180deg);
+        }
+        100%{
+            transform: rotateX(0deg);
+        }
+        100%{
+
+        }
+    }
+
+</style>
+<body>
+
+   
+    <div class="time position-fixed top-0 end-0 p-2 ">
+          
+    
+    </div>
+
+<div class="toast-container position-fixed top-0 end-0 p-3">
+  
+</div>
+    
+<div class="not">
+    
+</div>
+
+<div class="container my-5">
+    
+    <form id="form">
+     
+         <div class="row g-2">
+            <div class="col-3">
+                <input type="text" id="id" hidden >
+                  <input class="form-control invalid" id="img" name="pic" placeholder="Enter img" type="text" >
+            </div>
+            <div class="col-3">
+                  <input class="form-control" id="name" name="name" placeholder="Enter name" type="text" >
+            </div>
+            <div class="col-3">
+                  <input class="form-control" id="email" name="email" placeholder="Enter email" type="email" >
+            </div>
+            <div class="col-3">
+                  <input class="form-control" id="age" name="age" placeholder="Enter age" type="number" >
+            </div>
+            <div class="col-6 d-flex">
+                  <input class="form-check status ms-4"  name="status" value="Cricket" placeholder="Enter age" type="checkbox" > Cricket
+                  <input class="form-check status ms-4" name="status" value="Music" placeholder="Enter age" type="checkbox" > Music
+                  <input class="form-check status ms-4" name="status" value="Dancing" placeholder="Enter age" type="checkbox" > Dancing
+            </div>
+            <div class="col-6 d-flex">
+                  <input class="form-check gen ms-4" name="status" value="male" placeholder="Enter age" type="radio" > male
+                  <input class="form-check gen ms-4" name="status" value="female" placeholder="Enter age" type="radio" > female
+                  <input class="form-check gen ms-4" name="status" value="other" placeholder="Enter age" type="radio" > other
+            </div>
+            <div class="col-12 text-center">
+                  <button  class="btn btn-success" id="submain">submit</button>
+                  
+
+            </div>
+         </div>
+      
+
+    </form>
+</div>
+
+<div class="container" id="check">
+
+</div>
+
+<div class="container rounded-3 shadow-lg p-2 overflow-hidden">
+    <table class="table  rounded-3  border">
+        <thead class="table-dark ">
+            <tr>
+                <th>Pic</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>status</th>
+                <th>✏️</th>
+                <th>🗑️</th>
+                <th>🟰</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+           
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    
+  </div>
+</div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="index.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js" integrity="sha512-KFHXdr2oObHKI9w4Hv1XPKc898mE4kgYx58oqsc/JqqdLMDI4YjOLzom+EMlW8HFUd0QfjfAvxSL6sEq/a42fQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    jQuery("#form").validate({
+        focusInvalid: true,
+        errorClass: "invalid",
+        rules:{
+            name:{
+                :true,
+                minlength:5
+            }
+        },
+
+        messages:{
+            pic:"enter users pic",
+            name:{
+               : "Enter users name",
+               minlength: "should have 5 characters"
+            }
+
+        }
+    })
+
+
+</script> -->
+
+</html>
