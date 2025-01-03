@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <title>E commerce website</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
+
+<style>
+  .dropdown-toggle::after {
+    display: none !important;
+  }
+</style>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">E-Mart 🛍️</a>
+      <div id="auth" class="d-flex">
+       
+      </div>
+
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+        aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>img</th>
+                <th>title</th>
+                <th>price</th>
+                <th>btn</th>
+              </tr>
+            </thead>
+            <tbody class="cart">
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+
+<br/>
+<br/>
+<br/>
+
+
+
+
+  <div class="d-flex w-50 mx-auto m-3 px-3 align-items-center rounded-pill " style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+    🔍
+    <input type="text" class="form-control border-0" id="search">
+    🛍️
+  </div>
+
+  <div class="buttons">
+    <div class="container p-2">
+      <button class="btn btn-outline-secondary" id="viewall">all</button>
+      <button class="btn btn-outline-secondary" id="mens">mens</button>
+      <button class="btn btn-outline-secondary" id="jewelery">jewelery</button>
+      <button class="btn btn-outline-secondary" id="price_sort">Price_Sort</button>
+    </div>
+
+  </div>
+  <div class="container">
+    <div class="row row-cols-lg-4 g-4" id="boxes">
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+<!-- login feature modal -->
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+
+<div class="modal fade" id="signup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+
+          <!-- loign tab panes start -->
+
+
+         
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                
+                <form id="register">
+                    <div class="mb-3">
+                      <input type="text" class="form-control"  placeholder="user name" id="name" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <input type="email" class="form-control" placeholder="email" id="email" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <input type="number" class="form-control" placeholder="uphone" id="phone" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <input type="password" class="form-control" placeholder="password" id="password">
+                    </div>
+                    <button type="submit" class="btn btn-warning">Register</button>
+                  </form>
+                
+            </div>
+            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                <form id="login">
+                    <div class="mb-3">
+                      <input type="email" class="form-control" id="email1" aria-describedby="emailHelp">
+                    </div>
+                  
+                    <div class="mb-3">
+                      <input type="password" class="form-control" id="password1">
+                    </div>
+                    <button type="submit" class="btn btn-warning">Login</button>
+                  </form>
+
+            </div>
+        </div>
+
+
+
+
+          <!-- loign tab panes end-->
+
+
+      </div>
+      <div class="modal-footer">
+        <ul class="nav nav-underline" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Register</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Login</button>
+          </li>
+  
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- login feature modal end-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+  let activeUser = JSON.parse(localStorage.getItem("activeUser"));
+
+let auth = document.getElementById("auth")
+
+auth.innerHTML = `
+
+${
+  activeUser
+   &&
+   `
+      <button onclick="showCart()" class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+          🛒: <b id="cartlength"></b>
+        </button>
+        `
+}
+    
+
+${
+        activeUser 
+        ? 
+        `
+   
+
+        <div class="dropdown">
+        <a class="btn btn-light shadow dropdown-toggle rounded-circle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        👤
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" >${activeUser.name}</a></li>
+          <li><a class="dropdown-item" >${activeUser.email}</a></li>
+          <li><a class="dropdown-item" >${activeUser.phone}</a></li>
+             <li><hr class="dropdown-divider"></li>
+          <li>
+            <a class="dropdown-item" >
+                <button class="btn btn-danger btn-sm px-3" onclick="logOut()">
+                <i class="bi bi-box-arrow-right"></i>
+              </button>   
+            </a>
+            
+            </li>
+        </ul>
+      </div>
+
+        `
+        :
+        `
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#signup">
+           Login
+       </button>
+       `
+}
+`
+
+
+function logOut(){
+  localStorage.removeItem("activeUser");
+  location.reload();
+}
+
+
+</script>
+
+
+</body>
+
+<script src="data.js"></script>
+
+
+</script>
+
+
+
+
+
+
+<script>
+
+//  activeUser = JSON.parse(localStorage.getItem("activeUser"))
+
+
+
+
+
+
+
+    
+let register = [];
+document.getElementById("register").addEventListener("submit", function(e){
+ e.preventDefault();
+
+ let obj = {
+    name: document.querySelector("#name").value,
+    email: document.querySelector("#email").value,
+    phone: document.querySelector("#phone").value,
+    password: document.querySelector("#password").value,
+ }
+
+ register = JSON.parse(localStorage.getItem("register"))
+
+  let log = register.filter((ele) => {
+    if(ele.email == obj.email && ele.password == obj.password){
+       return ele;
+    }
+    })
+
+ if(log[0]){
+        alert("user already exist");
+ }
+else if(obj.name != "" && obj.email !="" && obj.phone !="" && obj.password != "")
+{
+
+
+  localStorage.setItem("activeUser", JSON.stringify(obj));
+
+register.push(obj);
+
+localStorage.setItem("register", JSON.stringify(register));
+location.href="index.html";
+
+}else{
+ alert("Please register first")
+}
+
+}
+)
+
+
+
+
+document.getElementById("login").addEventListener("submit", function(e){
+ e.preventDefault();
+
+ let objlog = {
+    email: document.querySelector("#email1").value,
+    password: document.querySelector("#password1").value
+ }
+if( objlog.email !="" && objlog.password != "")
+{
+
+ register = JSON.parse(localStorage.getItem("register"))
+
+  let log = register.filter((ele) => {
+    if(ele.email == objlog.email && ele.password == objlog.password){
+       return ele;
+    }
+    })
+
+    if(log[0]){
+        let activeUser = log[0];
+        localStorage.setItem("activeUser", JSON.stringify(activeUser));
+
+        location.reload();
+    }
+    else{
+        alert("user not register")
+    }
+
+
+}else{
+ alert("Please Login first")
+}
+
+}
+)
+
+
+
+
+</script>
+
+
+
+<script>
+
+
+
+
+
+  let search = document.getElementById("search")
+
+  search.addEventListener("keyup", function (e) {
+    let val = e.target.value.toUpperCase();
+
+    let searchData = data.filter((ele) => !ele.title.toUpperCase().indexOf(val) || !ele.category.toUpperCase().indexOf(val))
+    console.log(searchData)
+
+    showData(searchData);
+
+  })
+
+
+
+
+
+  let boxes = document.querySelector("#boxes")
+
+
+  let mens = document.querySelector("#mens");
+  let viewall = document.querySelector("#viewall");
+  let jewelery = document.querySelector("#jewelery")
+  let price_sort = document.querySelector("#price_sort");
+
+
+
+  price_sort.addEventListener("click", () => {
+    // let getData = data.map((ele) => ele.price.sort());
+
+    data.sort((a, b) => a.price - b.price);
+    let getData = data;
+    showData(getData)
+
+    // let , amul, joke, amit
+    // amit, amul, let, joke
+  })
+
+  jewelery.addEventListener("click", () => {
+    let getData = data.filter((ele) => ele.category == "jewelery");
+    showData(getData)
+  })
+
+  mens.addEventListener("click", () => {
+    let getData = data.filter((ele) => ele.category == "men's clothing");
+    console.log(getData);
+    showData(getData)
+  })
+
+
+  viewall.addEventListener("click", () => {
+    let getData = data.map((ele) => ele);
+    console.log(getData);
+    showData(getData)
+  })
+
+
+
+
+  let cartData = JSON.parse(localStorage.getItem("cartData")) || []
+  window.onload = showData(data);
+  window.onload = showCart()
+
+
+
+
+  function incCount(id) {
+    cartData = cartData.map((ele) => {
+      if (ele.id == id) {
+        ele.quentity += 1;
+      }
+      return ele;
+    })
+
+    localStorage.setItem("cartData", JSON.stringify(cartData));
+
+    setCartData(cartData)
+    showData(data)
+  }
+
+
+  function descCount(id) {
+    cartData = cartData.map((ele) => {
+      if (ele.id == id) {
+        if (ele.quentity > 1) {
+          ele.quentity -= 1;
+        }
+        else {
+          return ele = null;
+        }
+
+      }
+      return ele;
+    }).filter((ele) => ele != null)
+
+    localStorage.setItem("cartData", JSON.stringify(cartData));
+
+    setCartData(cartData)
+    showData(data)
+  }
+
+
+  function removeItem(id) {
+
+    let remcartData = cartData.filter((ele) => ele.id != id);
+
+    localStorage.setItem("cartData", JSON.stringify(remcartData));
+
+    showCart();
+
+
+  }
+
+
+
+  function checkCart(id) {
+
+    let cartData = JSON.parse(localStorage.getItem("cartData")) || []
+
+    cartData = cartData.filter((ele) => ele.id == id)
+
+    return !cartData[0]
+  }
+
+  function getque(id) {
+
+    let cartData = JSON.parse(localStorage.getItem("cartData")) || []
+
+    cartData = cartData.filter((ele) => ele.id == id)
+    return cartData[0].quentity;
+  }
+
+
+
+
+
+  function addCart(id) {
+
+    if(activeUser){
+      
+      let newcartData = data.filter((ele) => ele.id == id).map((ele) => {
+        if (ele.id == id) {
+          ele.quentity = 1;
+        }
+        return ele;
+      })
+
+      cartData = [...cartData, ...newcartData]
+      console.log(cartData)
+
+      setCartData(cartData)
+
+      document.getElementById("cartlength").innerHTML = cartData.length
+
+      showData(data)
+    }
+    else{
+
+      let logModal = new bootstrap.Modal(document.getElementById("signup"))
+
+      logModal.show();
+
+    }
+
+
+
+  }
+
+
+  document.getElementById("cartlength").innerHTML = cartData.length;
+
+
+  const setCartData = (d) => {
+    localStorage.setItem("cartData", JSON.stringify(d))
+  }
+
+
+
+
+
+  function showData(getData) {
+
+    boxes.innerHTML = "";
+
+    getData.map((ele) => {
+
+      boxes.innerHTML += `
+     <div class="col">
+      <div class="card p-2 h-100" >
+      <img style="height:250px" src=${ele.image} class="card-img-top img-thumbnail p-2" alt="...">
+      <div class="card-body p-0">
+        <h6 class="card-title">${ele.title}</h6>
+       
+        <div class="d-flex justify-content-between">
+           <span class="badge text-bg-secondary"> $ ${ele.price} /-</span>
+           <span class="badge text-bg-light d-flex"><span class="me-1" style="display:block; overflow:hidden; width:${ele.rating.rate * 16}px">⭐⭐⭐⭐⭐</span> ${ele.rating.rate}</span>
+        </div>
+        
+        ${
+        
+        (!checkCart(ele.id) && activeUser)
+          ?
+          ` <div class="btn-group pt-4 mx-auto">
+                    <button onclick="incCount(${ele.id})" class="btn btn-dark btn-sm">+</button>
+                    <button class="btn btn-outline-dark disabled text-dark btn-sm">${getque(ele.id)}</button>
+                    <button onclick="descCount(${ele.id})" class="btn btn-danger btn-sm">-</button>
+               </div>`
+          :
+          `
+              <div class="pt-4 ">
+                <button onclick="addCart(${ele.id})" class="btn btn-success btn-sm">Add To <i class="bi bi-cart3"></i></button>
+              </div>
+              `}
+        
+      </div>
+    </div>
+</div>
+     `
+    })
+
+  }
+
+
+
+
+
+
+  function showCart() {
+
+    let cart = document.querySelector(".cart");
+    cart.innerHTML = "";
+    cartData = JSON.parse(localStorage.getItem("cartData"))
+    cartData.map((ele) => {
+      cart.innerHTML += `
+             <tr>
+                <td><img class="img-fluid" src=${ele.image} alt="${ele.title}" /></td>
+                <td>${ele.title}</td>
+                <td class="ptotal">${ele.price * ele.quentity}</td>
+                <td>
+                  <div class="btn-group">
+                    <button onclick="incCount(${ele.id})" class="btn btn-dark btn-sm">+</button>
+                    <button class="btn btn-outline-dark disabled text-dark btn-sm">${ele.quentity}</button>
+                    <button onclick="descCount(${ele.id})" class="btn btn-danger btn-sm">-</button>
+                  </div>
+                </td>
+                <td>
+                  
+                    <button onclick="removeItem(${ele.id})" class="btn-close"></button>  
+                </td>
+              </tr>
+  
+  `
+    })
+
+  }
+
+
+
+</script>
+
+</html>
