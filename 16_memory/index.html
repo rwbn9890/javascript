@@ -1,0 +1,204 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+<style>
+
+    #pop{
+        width: 200px;
+        height: 50px;
+
+        background-color: orange;
+        position: relative;
+        display: none;
+
+    }
+
+    #pop:before{
+        content: "";
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        background-color: blue;
+        padding: 2px;
+
+        animation: tim 5s linear;
+    }
+
+    @keyframes tim{
+        to{
+            width:0px
+        }
+        from{
+            width: 100%;
+        }
+    }
+
+
+    
+</style>
+
+</head>
+<body>
+    
+<h1 id="pop">
+    shwoing time
+    <button onclick="clear()">x</button>
+</h1>
+
+<br/>
+<br/>
+<br/>
+
+<h1 id="date"></h1>
+
+
+<button onclick="show()">show</button>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<button onclick="inc()">+ user</button>
+
+
+</body>
+
+
+<script>
+
+// let name = "amit";
+// let email = "amitk@gmai.com"
+// let phone = 35687383;
+
+
+// console.log(name)
+// console.log(email)
+
+
+// try {
+//     setTimeout(function(){
+//     console.log(marks)
+// }, 1000)
+// } catch (error) {
+//     console.log("mark: " + error)
+// }
+
+//  let myInterval = setInterval(function(){
+//   console.log(phone)  
+// }, 1000)
+
+// console.log(myInterval)
+// clearInterval(myInterval)
+
+
+
+// try{
+
+
+    
+// }
+
+
+
+
+const setTime = setInterval(updateTime, 1000);
+
+function updateTime(){
+    let time = new Date();
+    document.querySelector("#date").innerHTML = `${time.getHours()} : ${time.getMinutes()} : ${time.getSeconds()}`;
+}
+
+
+
+
+
+   function show(){
+            // document.getElementById("pop").style.display= "block"
+            // myTimeout;
+            clearInterval(setTime)
+    }
+
+ let myTimeout = setTimeout(hide, 5000)
+
+   function hide(){
+            document.getElementById("pop").style.display= "none"
+    }
+
+
+
+   
+
+function clear(){
+  
+    clearTimeout(myTimeout)
+}
+
+let data;
+let user = 1;
+
+
+
+        
+let requesturl =  'https://fakestoreapi.com/products'
+let url  = `https://randomuser.me/api/user/gender`
+
+let xhr = new XMLHttpRequest();
+
+xhr.open('GET', url);
+
+xhr.onreadystatechange  = function(){
+
+   if(xhr.readyState == 1){
+    
+    console.log("data unset: " + xhr.readyState)
+   }
+
+   if(xhr.readyState == 2){
+    console.log("open: " + xhr.readyState)
+   }
+
+   if(xhr.readyState == 3){
+    console.log("loading: " + xhr.readyState)
+   }
+
+   if(xhr.readyState == 4){
+    data = JSON.parse(xhr.responseText);
+
+    console.log(data.results)
+   }
+}
+
+
+
+xhr.send();
+
+
+
+
+setTimeout(fun, 2000)
+
+function fun(){
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+
+
+
+
+</script>
+</html>
