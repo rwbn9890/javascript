@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="box" style="display: flex; gap:10px; flex-wrap:wrap ;"></div>
+    
+</body>
+
+<script src="fetch.js"></script>
+
+<script>
+
+// console.log(mainData);
+
+
+// mainData.map((ele)=> {
+//     // document.getElementById("box").innerHTML += `
+//     //     <div>
+//     //         <img src=${ele.avatar_url} width="50px" />
+//     //         <p>${ele.login}</p>
+//     //         </div>
+     
+//     // `
+//     console.log(ele)
+// })
+
+
+const mainData = [];
+
+fetch('https://api.github.com/users')
+.then((response) => {
+    return response.json();
+})
+.then((data)=>{
+   
+    data.map((ele)=> {
+    document.getElementById("box").innerHTML += `
+        <div>
+            <img src=${ele.avatar_url} width="50px" />
+            <p>${ele.login}</p>
+            </div>
+    `
+    console.log(ele)
+})
+})
+.catch((error)=>{
+    console.log(error);
+})
+.finally(() => {
+    console.log("loading...!");
+})
+
+
+
+
+
+
+
+</script>
+</html>
