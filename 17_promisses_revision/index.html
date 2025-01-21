@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+    <div id="main">
+
+    </div>
+
+
+    <button onclick="add()">click</button>
+    
+</body>
+
+<script>
+//     fetch('https://randomuser.me/api/?results=10')
+// .then((res)=>{
+//    return res.json();
+// })
+// .then((data)=>{
+//     console.log(data.results)
+// showData(data.results)
+//  })
+
+
+
+
+
+
+
+
+
+let city = "new york"
+
+
+
+
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API key}`)
+.then((res)=>{
+   return res.json();
+})
+.then((data)=>{
+    console.log(data.results)
+showData(data.results)
+ })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// async function getData(){
+//    let data = await fetch('https://randomuser.me/api/?results=10')
+
+//    let subdata = await data.json();
+
+//   showData(subdata.results)
+    
+// }
+
+// getData();
+
+async function getData(){
+   let data = await fetch('https://randomuser.me/api/?results=10')
+
+   let subdata = await data.json();
+
+   console.log(subdata)
+
+  showData(subdata.results)
+    
+}
+
+getData();
+
+
+
+const showData = (data) =>{
+    data.map((ele) => {
+        
+   return document.getElementById("main").innerHTML += `
+        <h2>${ele.name.first} ${ele.name.last}</h2>
+    `
+    })
+}
+
+
+
+</script>
+</html>
