@@ -10,17 +10,36 @@
 <body>
 
 
- 
-
-
     <div class="container p-3 shadow-lg mb-5">
         <div class="row">
-            <div class="col-4">
-                  <select name="" id="genre">
-
-                  </select>
+            <div class="col-3">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio"  id="btnradio1"  value="movie" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="btnradio1">MOvies</label>
+                  
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" value="tv"  autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnradio2">TV shows</label>
+                  </div>
             </div>
-            <div class="col-4">
+            <div class="col-3">
+                <div  >
+                   <input type="checkbox" value="hi" class="lang"> <label for="">Hindi</label>
+                   <input type="checkbox" value="te" class="lang"> <label for="">telagu</label>
+                   <input type="checkbox" value="ml" class="lang"> <label for="">malyalam</label>
+                   <input type="checkbox" value="ta" class="lang"> <label for="">tamil</label>
+
+                   <button onclick="filter1()">filter</button>
+                </div>
+            </div>
+            <div class="col-3">
+                  <div class="dropdown">
+                    <a  class="dropdown-toggle" data-bs-toggle="dropdown">GENREs</a>
+                    <div class="dropdown-menu" id="genre">
+
+                    </div>
+                  </div>
+            </div>
+            <div class="col-3">
                   <input type="text" id="search" class="form-control"> 
             </div>
         </div>
@@ -45,129 +64,10 @@
 </body>
 
 
-<script>
+<script src="index.js">
 
 
 // https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1
-
-
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=2254f6a103ea45b2d2965212918395da&page=1`)
-    .then((res) =>{
-        return res.json()
-    })
-    .then((data) =>{
-        console.log(data)
-        showMovies(data.results)
-        pages(data.page)
-    })
-
-
-
-    fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=2254f6a103ea45b2d2965212918395da`)
-    .then((res) =>{
-        return res.json()
-    })
-    .then((data) =>{
-        showGenres(data.genres)
-    })
-
-
-function changePage(p){
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=2254f6a103ea45b2d2965212918395da&page=${p}`)
-    .then((res) =>{
-        return res.json()
-    })
-    .then((data) =>{
-        console.log(data)
-        showMovies(data.results)
-        pages(data.page)
-    })
-
-}
-
-
-document.getElementById("search").addEventListener("change", function(e){
-    let search = e.target.value;
-    console.log(search)
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=2254f6a103ea45b2d2965212918395da&query=${search}&page=1`)
-    .then((res) =>{
-        return res.json()
-    })
-    .then((data) =>{
-        console.log(data)
-        showMovies(data.results)
-        pages(data.page)
-    })
-})
-
-
-
-
-
-function showMovies(data){
-    document.getElementById("movies").innerHTML =  ""
-    data.map((ele) => {
-            document.getElementById("movies").innerHTML += `
-        <div class="col-2 ">
-                <div class="card h-100" >
-                    <img src="https://image.tmdb.org/t/p/w500${ele.poster_path}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">${ele.original_title}</h5>
-                      <p class="card-text">${ele.Actors}</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
-            </div>
-`
-    })
-
-}
-
-
-
-function pages(page){
-
-document.getElementById("pagination").innerHTML = `
-         <ul class="pagination mx-auto" style="width:fit-content">
-          <li class="page-item"><a class="page-link" onclick="changePage(${page-1})">Prev</a></li>
-          <li class="page-item"><a class="page-link">${page}</a></li>
-          <li class="page-item"><a class="page-link" onclick="changePage(${page+1})">Next</a></li>
-        </ul>
-`
-
-}
-
-function showGenres(gen){
-    gen.map((ele) => {
-           document.getElementById("genre").innerHTML += `
-    <option value="${ele.id}">${ele.name}</option>
-`
-    })
-}
-
-
-document.getElementById("genre").addEventListener("change", function(e){
-    console.log(e.target.value)
-
-    
-    fetch(`https://api.themoviedb.org/3/movie/${e.target.value}/similar?api_key=2254f6a103ea45b2d2965212918395da`)
-    .then((res) =>{
-        return res.json()
-    })
-    .then((data) =>{
-        console.log(data)
-        showMovies(data.results)
-        pages(data.page)
-    })
-
-
-
-
-})
-
-
-
-
 
 
 
