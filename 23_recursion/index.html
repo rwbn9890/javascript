@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recursion</title>
+  </head>
+  <body></body>
+
+  <script>
+
+
+// HEAD RECURSION
+
+
+    function rec1(n){ // 4, 3, 2, 1, 0
+        if(n>0)
+        {
+            console.log(n)
+            rec1(n-1)
+        }
+    }
+
+    // function rec1(n) {
+    //   // 4
+    //   if (n > 0) {
+    //     console.log(n);
+    //     function rec1(n) {
+    //       // 3
+    //       if (n > 0) {
+    //         console.log(n);
+    //         function rec1(n) {
+    //           // 2
+    //           if (n > 0) {
+    //             console.log(n);
+    //             function rec1(n) {
+    //               // 1
+    //               if (n > 0) {
+    //                 console.log(n);
+    //                 function rec1(n) {
+    //                   // 4, 3, 2, 1, 0
+    //                   if (n > 0) {
+    //                     console.log(n);
+    //                     rec1(n - 1);
+    //                   }
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+
+    rec1(4);
+
+
+
+
+
+
+
+    console.log("******************");
+
+
+
+
+    // TAIL RECURSION
+
+
+
+
+
+       function rec2(n){ // 4, 3, 2, 1, 0
+        if(n>0)
+        {
+            rec2(n-1)
+            console.log(n)
+        }
+    }
+
+    // function rec2(n) {
+    //   // 4
+    //   if (n > 0) {
+    //     function rec2(n) {
+    //       // 3
+    //       if (n > 0) {
+    //         function rec2(n) {
+    //           // 2
+    //           if (n > 0) {
+    //             function rec2(n) {
+    //               // 1
+    //               if (n > 0) {
+    //                 function rec2(n) {
+    //                   // 0
+    //                   if (n > 0) {
+                        
+    //                     rec2(n - 1);
+    //                     console.log(n);
+    //                   }
+    //                 }
+                    
+    //     console.log(n);
+    //               }
+    //             }
+    //     console.log(n);
+    //           }
+    //         }
+            
+    //     console.log(n);
+    //       }
+    //     }
+    //     console.log(n);
+    //   }
+    // }
+
+    rec2(4);
+
+
+
+    
+    console.log("******************");
+
+
+   function rec3(n){//4
+        if(n>0)
+        {
+        console.log(n)
+          rec3(n-1);//3
+          rec3(n-1)  // 3
+        }
+    }
+
+    rec3(4)
+
+
+    
+    console.log("******************");
+
+
+   function rec4(n){//4
+        if(n>0)
+        {
+      
+          rec4(n-1);//3
+          rec4(n-1)  // 3
+          console.log(n)
+        }
+    }
+
+    rec4(4)
+
+    
+    console.log("******************");
+
+
+   function rec5(n){//4
+        if(n>0)
+        {
+      
+            console.log(n)
+          rec5(rec5(n-1));//3
+        }
+    }
+
+    rec5(4)
+
+
+
+  </script>
+</html>
