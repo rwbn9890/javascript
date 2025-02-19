@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+</head>
+<body>
+    
+    <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+                <th>task</th>
+                <th>status</th>
+            </tr>
+          </thead>
+          <tbody id="task">
+           
+          </tbody>
+        </table>
+    </div>
+</body>
+
+<script src="index.js">
+</script>
+
+<script>
+
+    let task1 = document.getElementById("task")
+    
+let id = JSON.parse( localStorage.getItem("id_")) || 2
+function showTask(data){
+
+    console.log(data)
+
+task1.innerHTML =""
+data.todo.map((ele) => {
+    task1.innerHTML += `
+          <tr>
+            <td>${ele.todo}</td>
+            <td>${ele.status}</td>
+        </tr>
+    `
+})
+
+
+}
+
+
+const getTask = async (id) =>{
+const resp = await fetch(url_task+id);
+const data = await resp.json();
+ console.log(data)
+showTask(data)
+}
+
+getTask(id)
+
+
+</script>
+</html>
